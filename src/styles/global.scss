@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+//Variaveis globais
+:root {
+  --white: #ffffff;
+
+  --grey1: #e1e1e6;
+  --grey5: #828282;
+  --grey10: #262626;
+
+  --cyan5: #61dafb;
+
+  --yellow5: #eba417;
+}
+
+//para telas tablet
+@media (min-width: 1080px) {
+  Html{
+    font-size: 97.75%;// 15px
+  }
+}
+
+//para telas mobile
+@media (min-width: 720px) {
+  Html{
+    font-size: 87.5%;// 14px
+  }
+}
+
+body{
+  background-color: var(--grey10);
+  color: var(--white);
+}
+
+body, input, textarea, select, button {
+  font-family: 'Poppins', sans-serif;
+  font: 400 1rem
+}
+
+button{
+  cursor: pointer;
+}
+
+a{
+  color: inherit;
+  text-decoration: none;
+}
+
