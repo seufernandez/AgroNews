@@ -10,11 +10,20 @@
 
   --grey1: #e1e1e6;
   --grey5: #828282;
-  --grey10: #262626;
+  --grey7: #595959;
+  --grey9: #333333;
+  --grey10: #1f1f1f;
 
   --cyan5: #61dafb;
 
-  --yellow5: #eba417;
+  --green1: #28da0d;
+  --green5: #21b30b;
+  --green10: #258F14;
+  
+  --weakGreen: #248f1429;
+
+  --pastelOrange: #EBA83A;
+  --Orange1: #ffa500;
 }
 
 //para telas tablet
@@ -32,12 +41,13 @@
 }
 
 body{
+  // background-color: var(--grey10);
   background-color: var(--grey10);
   color: var(--white);
 }
 
 body, input, textarea, select, button {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font: 400 1rem
 }
 
