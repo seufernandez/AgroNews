@@ -2,11 +2,16 @@ import { FaGoogle } from 'react-icons/fa'
 import { FiX } from 'react-icons/fi'
 import styles from './styles.module.scss'
 
+import { signIn, useSession } from 'next-auth/client'
+
+
 export function SignInButton() {
-  const isUserLoggedIn = false
+  const [session] = useSession()
+
+  console.log(session)
 
   return (
-    isUserLoggedIn ? (
+    session ? (
       <button
         type="button"
         className={styles.signInButton}
@@ -19,6 +24,7 @@ export function SignInButton() {
       <button
         type="button"
         className={styles.signInButton}
+        onClick={() => signIn('google')}
       >
         <FaGoogle color="#58BB48" />
         SignIn with Google
