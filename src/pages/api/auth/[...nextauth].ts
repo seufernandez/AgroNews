@@ -15,24 +15,42 @@ export default NextAuth({
       scope: 'https://www.googleapis.com/auth/userinfo.email  https://www.googleapis.com/auth/userinfo.profile'
     })
   ],
-  jwt: {
-    signingKey: process.env.SIGNING_KEY
-  },
+
   callbacks: {
     async signIn(user, account, profile) {
       const { name, email } = user
       try {
         await fauna.query(
-          q.Create(
-            q.Collection('users'),
-            {
-              data: {
-                name,
-                email
+          q.If(
+            // (
+            q.Not(
+              q.Exists(
+                q.Match(
+                  q.Index('user_by_email'),
+                  q.Casefold(user.email)
+                )
+              )
+            ),
+            // ) {
+            q.Create(
+              q.Collection('users'),
+              {
+                data: {
+                  name,
+                  email
+                }
               }
-            }
+            ),
+            //} else {
+            q.Get(
+              q.Match(
+                q.Index('user_by_email'),
+                q.Casefold(user.email)
+              )
+            )
           )
         )
+
         return true
       } catch {
         return false
