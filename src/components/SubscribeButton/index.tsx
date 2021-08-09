@@ -1,5 +1,8 @@
 import styles from './styles.module.scss';
 import { useSession, signIn } from 'next-auth/client';
+import { api } from '../../services/api';
+import { getStripeJs } from '../../services/stripe-js';
+import toast from 'react-hot-toast';
 
 interface SubscribeButtonProps {
   priceId: string
@@ -9,12 +12,24 @@ interface SubscribeButtonProps {
 export function SubscribeButton({ priceId }: SubscribeButtonProps) {
   const [session] = useSession()
 
-  function handleSubscribe() {
+  async function handleSubscribe() {
     if (!session) {
       signIn('google')
       return
     }
-    //Criação da Checkout Session
+    //Criando a CheckoutSession
+    try {
+      const response = await api.post('/subscribe')
+
+      const { sessionId } = response.data
+
+      const stripe = await getStripeJs()
+
+      await stripe.redirectToCheckout({ sessionId })
+    } catch (err) {
+      toast.error(err.message)
+    }
+
 
   }
 
