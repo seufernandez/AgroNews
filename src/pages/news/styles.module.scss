@@ -1,0 +1,50 @@
+.container{
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 2rem;
+
+}
+
+.news{
+max-width: 720px;
+margin: 5rem auto 0;
+  a {  
+    display: block;
+    
+    & + a {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--grey9);
+    }
+
+
+    time {
+      font-size: 1rem;//16px
+      display: flex;
+      align-items: center;
+      color: var(--grey5);
+    }
+
+    strong {
+      display: block;
+      font-size: 1.5rem;//24px
+      margin-top: 1rem;
+      line-height: 2rem;
+    
+      transition: color 200ms;
+    }
+
+    p {
+      color: var(--grey5);
+      margin-top: 0.5rem;
+      line-height: 1.625rem;//26px
+    }
+    
+
+    &:hover {
+      color: var(--green5)
+    }
+
+
+  }
+}

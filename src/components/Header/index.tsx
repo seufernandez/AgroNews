@@ -8,7 +8,7 @@ export function Header() {
         <img src="/assets/logo.svg" alt="" />
         <nav>
           <a className={styles.active} href="#">Home</a>
-          <a href="#">News</a>
+          <a href="/news">News</a>
         </nav>
 
         <SignInButton />

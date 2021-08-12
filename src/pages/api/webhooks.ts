@@ -1,11 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import toast from 'react-hot-toast';
 import { Readable } from 'stream';
 import Stripe from 'stripe';
 import { stripe } from './../../services/stripe';
 import { saveSubscription } from './_lib/manageSubscription';
-
-
 
 
 async function buffer(readable: Readable) {
@@ -48,7 +45,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const { type } = event
 
     if (relevantEvents.has(type)) {
-      //fazer alguma coisa
+
       switch (type) {
         case 'customer.subscription.updated':
         case 'customer.subscription.deleted':
