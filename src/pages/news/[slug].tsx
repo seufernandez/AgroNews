@@ -17,12 +17,16 @@ interface PostProps {
   }
 }
 
-export default function Post({post}: PostProps){
+
+export default function Post({post}: PostProps, session){
+  
+
   return(
   <>
     <Head>
       <title>{post.title} | Agronews</title>
     </Head>
+    
     <main className={styles.container} >
       <article className={styles.post} >
         <h1>{post.title}</h1>
@@ -34,20 +38,26 @@ export default function Post({post}: PostProps){
       </article>
     </main>
 
-    
-  
-  
   </>
 
   )
 }
 
 export const getServerSideProps: GetServerSideProps = async ({req, params}) => {
-const session = await getSession({ req })
-const { slug } = params
-  // if(!session){
+  const session = await getSession({ req })
+  const { slug } = params
     
-  // }
+  console.log(session);
+
+
+if(!session.activeSubscription){
+  return{
+    redirect: {
+      destination: '/',
+      permanent:false
+    }
+  }
+}
 
   const prismic = getPrismicClient(req)
 
