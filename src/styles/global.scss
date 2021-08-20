@@ -16,47 +16,50 @@
 
   --cyan5: #61dafb;
 
-  --green1: #28da0d;
+  --green1: #51ee38;
   --green5: #21b30b;
-  --green10: #258F14;
-  
+  --green10: #258f14;
+
   --weakGreen: #248f1429;
 
-  --pastelOrange: #EBA83A;
+  --pastelOrange: #eba83a;
   --Orange1: #ffa500;
 }
 
 //para telas tablet
 @media (min-width: 1080px) {
-  Html{
-    font-size: 97.75%;// 15px
+  Html {
+    font-size: 97.75%; // 15px
   }
 }
 
 //para telas mobile
 @media (min-width: 720px) {
-  Html{
-    font-size: 87.5%;// 14px
+  Html {
+    font-size: 87.5%; // 14px
   }
 }
 
-body{
+body {
   // background-color: var(--grey10);
   background-color: var(--grey10);
   color: var(--white);
 }
 
-body, input, textarea, select, button {
-  font-family: 'Roboto', sans-serif;
-  font: 400 1rem
+body,
+input,
+textarea,
+select,
+button {
+  font-family: "Roboto", sans-serif;
+  font: 400 1rem;
 }
 
-button{
+button {
   cursor: pointer;
 }
 
-a{
+a {
   color: inherit;
   text-decoration: none;
 }
-
