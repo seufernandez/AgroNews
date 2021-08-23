@@ -1,4 +1,4 @@
-import { GetStaticPaths } from "next"
+import { GetStaticPaths, GetStaticProps } from "next"
 import { useSession } from "next-auth/client"
 import { RichText } from 'prismic-dom';
 import React, { useEffect } from "react";
