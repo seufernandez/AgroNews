@@ -6,7 +6,7 @@ import Providers from 'next-auth/providers'
 import { fauna } from '../../../services/fauna'
 
 export default NextAuth({
-  
+
   providers: [
     Providers.Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -15,9 +15,9 @@ export default NextAuth({
       scope: 'https://www.googleapis.com/auth/userinfo.email  https://www.googleapis.com/auth/userinfo.profile'
     })
   ],
-  
+
   callbacks: {
-    async session(session){
+    async session(session) {
       try {
         const userActiveSubscription = await fauna.query(
           q.Get(
@@ -51,10 +51,10 @@ export default NextAuth({
           activeSubscription: null
         }
       }
-    },  
+    },
     async signIn(user, account, profile) {
       const { name, email } = user
-      try { 
+      try {
         await fauna.query(
           q.If(
             // (
@@ -64,15 +64,15 @@ export default NextAuth({
                   q.Index('user_by_email'),
                   q.Casefold(user.email)
                 )
-              ) 
-            ),  
+              )
+            ),
             // ) {
             q.Create(
               q.Collection('users'),
               {
                 data: {
                   name,
-                  email 
+                  email
                 }
               }
             ),

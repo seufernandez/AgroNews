@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next"
+import { GetStaticPaths } from "next"
 import { useSession } from "next-auth/client"
 import { RichText } from 'prismic-dom';
 import React, { useEffect } from "react";
@@ -66,7 +66,8 @@ export default function NewsPreview({post}: NewsPreviewProps){
   )
 }
 
-export const getStaticPaths = () => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  
   return {
     paths:[],
     fallback:'blocking'
