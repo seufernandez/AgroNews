@@ -3,7 +3,6 @@ import { FiX } from 'react-icons/fi'
 import styles from './styles.module.scss'
 
 import { signIn, signOut, useSession } from 'next-auth/client'
-import toast from 'react-hot-toast'
 
 
 export function SignInButton() {
